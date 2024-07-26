@@ -20,10 +20,19 @@ def Add_new_video(videos):
     videos.append({"name":name,"time":time})
     save_video_helper(videos)
 def Update_video(videos):
-    pass
+    List_all_videos(videos)
+    index=int(input("Enter video number to update"))
+    if 1<=index<=len(videos):
+        name=input("Enter video name")
+        time=input("Enter video time")
+        videos[index-1]={"name":name,"time":time}
+        save_video_helper(videos)
 def Delete_video(videos):
-    pass
-
+      List_all_videos(videos)
+      index=int(input("Enter video number to delete"))
+      if 1<=index<=len(videos):
+          del videos[index-1]
+          save_video_helper(videos)
 
 def main():
     videos=load_video()
@@ -44,9 +53,9 @@ def main():
                 Add_new_video(videos)
 
             case "3":
-                Update_video(video)
+                Update_video(videos)
             case "4":
-                Delete_video(video)
+                Delete_video(videos)
             case "5":
                 break
             case _:
